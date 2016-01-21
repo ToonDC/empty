@@ -20,7 +20,10 @@
     "adminUsername": {
       "value": "ubuntu"
     },
-    "adminPassword": {
+    "sshKeyData": {
+      "value": "ubuntu"
+    },
+    "discoveryUrl": {
       "value": "GEN-PASSWORD"
     }
   }
