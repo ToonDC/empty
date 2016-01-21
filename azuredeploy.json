@@ -112,16 +112,19 @@
 		"imageSku": "Stable",
 		"sshKeyPath": "[concat('/home/',parameters('adminUsername'),'/.ssh/authorized_keys')]",
 		"unitFile": "[concat('#cloud-config
-			coreos:
-			  etcd:
-				discovery: ', parameters('discoveryUrl'),'
-				addr: $private_ipv4:4001
-				peer-addr: $private_ipv4:7001
-			  units:
-				- name: etcd.service
-				  command: start
-				- name: fleet.service
-				  command: start')]"
+coreos:
+ etcd:
+  discovery: ', parameters('discoveryUrl'),'
+  addr: $private_ipv4:4001
+  peer-addr: $private_ipv4:7001
+ fleet:
+  public-ip: $private_ipv4
+  metadata: region=', parameters('resourceLocation'),'
+ units:
+  - name: etcd.service
+    command: start
+  - name: fleet.service
+    command: start')]"
 	},
 	"resources": [{
 		"type": "Microsoft.Network/virtualNetworks",
