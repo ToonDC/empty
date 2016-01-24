@@ -124,7 +124,8 @@ coreos:
   - name: etcd.service
     command: start
   - name: fleet.service
-    command: start')]"
+    command: start
+    after: etcd.service')]"
 	},
 	"resources": [{
 		"type": "Microsoft.Network/virtualNetworks",
